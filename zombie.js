@@ -1,0 +1,40 @@
+class zombie{
+
+  constructor(x,y,width,height,zombiePos,zombieAnimation) {
+      this.animation = zombieAnimation;
+      this.speed = 0.05;
+      this.body = Bodies.rectangle(x,y,width,height);
+      this.width = width;
+      this.height = height;
+      this.zombiePos = zombiePosition;
+      World.add(world,this.body);
+  }
+   animate(){
+       this.speed += 0.05
+   }
+   
+   remove(index){
+     this.animation = deadZombieAnimation;
+     this.width = 300,
+     this.height = 300;
+     this.speed = 0.05;
+     setTimeout(()=> {
+     Matter.World.remove(worls,zombies[index].body);
+     delete zombies[index];
+     },2000)
+   }
+
+   display(){
+
+    var angle = this.body.angle;
+    var pos = this.body.position;
+    var index = floor(this.speed % this.animation.length);
+
+    push();
+    translate(pos.x, pos.y);
+    rotate(angle);
+    imageMode(CENTER);
+    image(this.animation[index], 0, this.zombiePosition, this.width, this.height);
+    pop();
+   }
+}
